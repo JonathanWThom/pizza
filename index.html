@@ -26,59 +26,67 @@
           <div class="col-md-3"></div>
         </div>
       </div><!--intro-->
-      <form>
-        <div id="mainInfo">
-          <div class="form-group">
-            <div class="radio">
-              <label>
-                <input type="radio" name="userSizeSelection" value="Small" checked="checked">
-                Small
-              </label>
+      <div class="row">
+        <div class="col-md-6 well">
+          <form>
+            <h3>Customize Your Pizza!</h3>
+            <div id="mainInfo">
+              <div class="form-group">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="userSizeSelection" value="Small" checked="checked">
+                    Small
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="userSizeSelection" value="Medium">
+                    Medium
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="userSizeSelection" value="Large">
+                    Large
+                  </label>
+                </div>
+              </div><!--form group-->
+              <div class="form-group" id="toppingOptions">
+                <p>Please select any/all toppings you'd like:</p>
+                <input type="checkbox" name="toppings" value=" Pepperoni">Pepperoni<br>
+                <input type="checkbox" name="toppings" value=" Mushrooms">Mushrooms<br>
+                <input type="checkbox" name="toppings" value=" Onions">Onions<br>
+                <input type="checkbox" name="toppings" value=" Sausage">Sausage<br>
+                <input type="checkbox" name="toppings" value=" Bacon">Bacon<br>
+                <input type="checkbox" name="toppings" value=" Extra Cheese">Extra Cheese<br>
+                <input type="checkbox" name="toppings" value=" Olives">Black olives<br>
+                <input type="checkbox" name="toppings" value=" Peppers">Green peppers<br>
+                <input type="checkbox" name="toppings" value=" Pineapple">Pineapple<br>
+                <input type="checkbox" name="toppings" value=" Spinach">Spinach<br>
+              </div> <!--toppings-->
+              <input id="name" type="text" class="form-control" placeholder="Name">
+            </div> <!--Main info-->
+            <div id="addressInfo">
+              <input id="street" type="text" class="form-control" placeholder="Street">
+              <input id="city" type="text" class="form-control" placeholder="City">
+              <input id="state" type="text" class="form-control" placeholder="State">
             </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="userSizeSelection" value="Medium">
-                Medium
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="userSizeSelection" value="Large">
-                Large
-              </label>
-            </div>
-          </div><!--form group-->
-          <div class="form-group" id="toppingOptions">
-            <p>Please select any/all toppings you'd like:</p>
-            <input type="checkbox" name="toppings" value=" Pepperoni">Pepperoni<br>
-            <input type="checkbox" name="toppings" value=" Mushrooms">Mushrooms<br>
-            <input type="checkbox" name="toppings" value=" Onions">Onions<br>
-            <input type="checkbox" name="toppings" value=" Sausage">Sausage<br>
-            <input type="checkbox" name="toppings" value=" Bacon">Bacon<br>
-            <input type="checkbox" name="toppings" value=" Extra Cheese">Extra Cheese<br>
-            <input type="checkbox" name="toppings" value=" Olives">Black olives<br>
-            <input type="checkbox" name="toppings" value=" Peppers">Green peppers<br>
-            <input type="checkbox" name="toppings" value=" Pineapple">Pineapple<br>
-            <input type="checkbox" name="toppings" value=" Spinach">Spinach<br>
-          </div> <!--toppings-->
-          <input id="name" type="text" class="form-control" placeholder="Name">
-        </div> <!--Main info-->
-        <div id="addressInfo">
-          <input id="street" type="text" class="form-control" placeholder="Street">
-          <input id="city" type="text" class="form-control" placeholder="City">
-          <input id="state" type="text" class="form-control" placeholder="State">
-        </div>
-        <button type="submit" class="form-control" id="addPizza">Add Pizza to Order</button>
-      </form>
+            <button type="submit" class="form-control" id="addPizza">Add Pizza to Order</button>
+          </form>
+        </div><!--column-->
+        <div class="col-md-6 well">
+          <h3>Order Summary</h3>
+          <div id="pizzas">
+            <ul>
+            </ul>
+            <h4 id="subtotal">Total: $<span class="total"></span></h4>
+          </div>
+          <div id="extraInfo">
+            <p class="toppings"></p>
+          </div>
+        </div><!--column-->
+      </div><!--row-->
       <button id="finalOrder" class="form-control">Place Order</button>
-      <div id="pizzas">
-        <ul>
-        </ul>
-        <h4 id="subtotal">Total: $<span class="total"></span></h4>
-      </div>
-      <div id="extraInfo">
-        <p class="toppings"></p>
-      </div>
       <div id="receipt">
         <h3>Thank you <span id="userName"></span>! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be ready soon. Your total was $<span class="total"></span>.</h3>
       </div>
