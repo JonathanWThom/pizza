@@ -1,11 +1,7 @@
 // Business Logic
-function Pizza(pizzaSize, toppings) {
+function Pizza(pizzaSize) {
   this.pizzaSize = pizzaSize;
   this.toppings = [];
-}
-
-function topping(topping) {
-  this.topping = topping;
 }
 
 function Address(street, city, state) {
@@ -71,13 +67,11 @@ $(document).ready(function(){
     ///refactor append section
     $("#pizzas ul").append("<li><span class='newPizza'>" + pizzaOrder.pizzaSize + " pizza with " + pizzaOrder.toppings.length + " topping(s): $" + pizzaOrderPrice + "</span></li>");
     $("#subtotal").show();
-
-    console.log(pizzaOrder.toppings);
-
-    // $(".newPizza").last().click(function() {
-    //   $("#orderInfo").show();
-    //   $(".toppings").text(pizzaOrder.toppings);
-    // });
+//
+    $(".newPizza").last().click(function() {
+      $("#extraInfo").show();
+      $(".toppings").text(pizzaOrder.toppings);
+    });
 
     /// does this count as ui or business
     finalOrderPrice += pizzaOrderPrice;
@@ -96,6 +90,7 @@ $(document).ready(function(){
   }); //submit
 
   $("#finalOrder").click(function() {
+    $("#extraInfo").hide();
     $("#pizzas").hide();
     $("#subtotal").hide();
     $("#finalOrder").hide();
