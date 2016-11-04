@@ -23,6 +23,8 @@ Pizza.prototype.price = function() {
   return pizzaPrice;
 }
 
+var finalOrderPrice = 0;
+
 // UI Logic
 $(document).ready(function(){
   $("form").submit(function(event){
@@ -34,6 +36,7 @@ $(document).ready(function(){
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
     var pizzaOrderPrice = pizzaOrder.price();
     console.log(pizzaOrderPrice);
+    finalOrderPrice += pizzaOrderPrice;
     $("#finalOrder").show();
 
     $("input[type=checkbox]").prop("checked", false);
@@ -41,6 +44,10 @@ $(document).ready(function(){
       return this.getAttribute("checked") === "checked";
     });
 
-  });
+  }); //submit
 
+  $("#finalOrder").click(function() {
+    console.log(finalOrderPrice);
+  });
+  
 });
