@@ -15,10 +15,11 @@ Pizza.prototype.price = function() {
   } else if (this.pizzaSize === "large") {
     pizzaPrice += 15;
   }
-  
+
   for (var i = 2; i < this.toppings.length; i++) {
     pizzaPrice += 1;
   }
+  
   return pizzaPrice;
 }
 // UI Logic
