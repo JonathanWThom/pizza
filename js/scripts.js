@@ -50,10 +50,12 @@ function optionChosen() {
 ///// User Interface Logic /////
 $(document).ready(function(){
 
+var delivery = false;
   /// Delivery vs Carry Out ///
   $("#delivery").click(function(){
     optionChosen();
     $("#addressInfo").show();
+    delivery = true;
   });
 
   $("#carryOut").click(function() {
@@ -99,21 +101,26 @@ $(document).ready(function(){
 
   /// Sumbit final order. Sends you to receipt page ///
   $("#finalOrder").click(function() {
-    $("#inputAndOutput").hide();
-    $("#receipt").show();
-
-    //Takes user name once final order is submitted. Tells them how many pizzas they ordered
-    var userName = $("#name").val();
-    $("#userName").text(userName);
-    $("#pizzaNumber").text(pizzaNumber);
-
-    //Takes user address, only returns anything if they included a street
     var street = $("#street").val();
     var city = $("#city").val();
     var state = $("#state").val();
     var userAddress = new Address(street, city, state);
-    if (street !== "") {
+    var userName = $("#name").val();
+
+    //check for inputs//
+    if (userAddress.street !== "" && userAddress.city !== "" && userAddress.state !== "" && delivery === true && userName !== "") {
       $("#receiptWell").append(userAddress.format());
+      $("#inputAndOutput").hide();
+      $("#receipt").show();
+      $("#userName").text(userName);
+      $("#pizzaNumber").text(pizzaNumber);
+    } else if (delivery === false && userName !== "") {
+      $("#inputAndOutput").hide();
+      $("#receipt").show();
+      $("#userName").text(userName);
+      $("#pizzaNumber").text(pizzaNumber);
+    } else {
+      alert("Please fill all fields");
     }
   });
 
