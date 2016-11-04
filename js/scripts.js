@@ -47,6 +47,12 @@ function optionChosen() {
   $("#userInputFields").show();
 }
 
+function validOrder() {
+  $("#inputAndOutput").hide();
+  $("#receipt").show();
+  $("#pizzaNumber").text(pizzaNumber);
+}
+
 ///// User Interface Logic /////
 $(document).ready(function(){
 
@@ -101,24 +107,23 @@ var delivery = false;
 
   /// Sumbit final order. Sends you to receipt page ///
   $("#finalOrder").click(function() {
+
+    //takes address and name input from user//
     var street = $("#street").val();
     var city = $("#city").val();
     var state = $("#state").val();
     var userAddress = new Address(street, city, state);
     var userName = $("#name").val();
+    console.log(userName);
 
-    //check for inputs//
+    //check for valid inputs//
     if (userAddress.street !== "" && userAddress.city !== "" && userAddress.state !== "" && delivery === true && userName !== "") {
       $("#receiptWell").append(userAddress.format());
-      $("#inputAndOutput").hide();
-      $("#receipt").show();
+      validOrder();
       $("#userName").text(userName);
-      $("#pizzaNumber").text(pizzaNumber);
     } else if (delivery === false && userName !== "") {
-      $("#inputAndOutput").hide();
-      $("#receipt").show();
+      validOrder();
       $("#userName").text(userName);
-      $("#pizzaNumber").text(pizzaNumber);
     } else {
       alert("Please fill all fields");
     }
