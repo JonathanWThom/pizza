@@ -26,10 +26,6 @@ Pizza.prototype.price = function() {
     pizzaPrice += 1;
   }
 
-  if (delivery === true) {
-    pizzaPrice +=5;
-  }
-
   return pizzaPrice;
 }
 
