@@ -1,7 +1,11 @@
 // Business Logic
-function Pizza(toppings, pizzaSize, delivery) {
-  this.toppings = toppings;
+function Pizza(pizzaSize, toppings) {
   this.pizzaSize = pizzaSize;
+  this.toppings = [];
+}
+
+function topping(topping) {
+  this.topping = topping;
 }
 
 function Address(street, city, state) {
@@ -56,11 +60,12 @@ $(document).ready(function(){
 
   $("form").submit(function(event){
     event.preventDefault();
-    var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
-      $(this).val();
-      });
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
-    var pizzaOrder = new Pizza(toppings, userSizeSelection);
+    var pizzaOrder = new Pizza(userSizeSelection);
+    $("input:checkbox[name=toppings]:checked").each(function(){
+      var newTopping = $(this).val();
+      pizzaOrder.toppings.push(newTopping);
+      });
     var pizzaOrderPrice = pizzaOrder.price();
 
     ///refactor append section
