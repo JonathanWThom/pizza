@@ -1,5 +1,5 @@
 // Business Logic
-function Pizza(toppings, pizzaSize) {
+function Pizza(toppings, pizzaSize, pizzaNumber) {
   this.toppings = toppings;
   this.pizzaSize = pizzaSize;
 }
@@ -16,34 +16,31 @@ Pizza.prototype.price = function() {
     pizzaPrice += 15;
   }
 
-  for (var i = 2; i < this.toppings.length; i++) {
+  for (var j = 2; j < this.toppings.length; j++) {
     pizzaPrice += 1;
   }
 
   return pizzaPrice;
 }
+
 // UI Logic
 $(document).ready(function(){
-  $("#extra-pizza").click(function(){
-    $("input[type=checkbox]").removeAttr("checked");
-    $("input[type=radio]").prop("checked", function () {
-        return this.getAttribute("checked") === "checked";
-    });
-
-  });
-
-  $("#final-order").click(function(){
-
+  $("form").submit(function(event){
+    event.preventDefault();
     var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
       $(this).val();
     });
-
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
     var pizzaOrderPrice = pizzaOrder.price();
     console.log(pizzaOrderPrice);
+    $("#finalOrder").show();
 
-  }); //form submit
+    $("input[type=checkbox]").prop("checked", false);
+    $("input[type=radio]").prop("checked", function () {
+      return this.getAttribute("checked") === "checked";
+    });
 
+  });
 
 });
