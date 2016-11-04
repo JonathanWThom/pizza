@@ -14,7 +14,7 @@ Pizza.prototype.price = function() {
   var pizzaPrice = 0;
 
   if (this.pizzaSize === "Small") {
-    //return?
+
     pizzaPrice += 5;
   } else if (this.pizzaSize === "Medium") {
     pizzaPrice += 10;
@@ -99,18 +99,15 @@ $(document).ready(function(){
 
   /// Sumbit final order. Sends you to receipt page ///
   $("#finalOrder").click(function() {
-    $("#extraInfo").hide();
-    $("#pizzas").hide();
-    $("#subtotal").hide();
-    $("#finalOrder").hide();
-    $("form").hide();
+    $("#inputAndOutput").hide();
     $("#receipt").show();
-    $("#orderSummary").hide();
-    $("#finalOrder").hide();
-    $("#userInputFields").hide();
+
+    //Takes user name once final order is submitted. Tells them how many pizzas they ordered
     var userName = $("#name").val();
     $("#userName").text(userName);
     $("#pizzaNumber").text(pizzaNumber);
+
+    //Takes user address, only returns anything if they included a street
     var street = $("#street").val();
     var city = $("#city").val();
     var state = $("#state").val();
