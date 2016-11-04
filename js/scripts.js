@@ -30,14 +30,11 @@ $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
 
-    ///better to do this on back end????
-    var toppings = [];
-    /////
-
-    $("input:checkbox[name=toppings]:checked").each(function(){
-      var userToppingsSelections = $(this).val();
-      toppings.push(userToppingsSelections);
+    var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
+      $(this).val();
     });
+
+    //var userToppingsSelections = 
 
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
