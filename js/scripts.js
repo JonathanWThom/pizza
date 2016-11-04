@@ -24,8 +24,15 @@ Pizza.prototype.price = function() {
 }
 // UI Logic
 $(document).ready(function(){
-  $("form").submit(function(event){
-    event.preventDefault();
+  $("#extra-pizza").click(function(){
+    $("input[type=checkbox]").removeAttr("checked");
+    $("input[type=radio]").prop("checked", function () {
+        return this.getAttribute("checked") === "checked";
+    });
+
+  });
+
+  $("#final-order").click(function(){
 
     var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
       $(this).val();
@@ -38,10 +45,5 @@ $(document).ready(function(){
 
   }); //form submit
 
-  $("#extra-pizza").click(function(){
-    //$('input:checkbox[name=toppings]:checked').removeAttr('checked');
-    $("input[type=radio]").prop("checked", function () {
-        return this.getAttribute("checked") === "checked";
-    });
-  });
+
 });
