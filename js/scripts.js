@@ -29,6 +29,17 @@ $(document).ready(function(){
   var finalOrderPrice = 0;
   var pizzaNumber = 0;
 
+  $("#delivery").click(function(){
+    $("#mainInfo").show();
+    $("#addressInfo").show();
+    $("#addPizza").show();
+  });
+
+  $("#carryOut").click(function() {
+    $("#mainInfo").show();
+    $("#addPizza").show();
+  });
+
   $("form").submit(function(event){
     event.preventDefault();
     var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
@@ -61,6 +72,8 @@ $(document).ready(function(){
     $("#subtotal").hide();
     $("#finalOrder").hide();
     $("form").hide();
+    $("#delivery").hide();
+    $("#carryOut").hide();
     $("#receipt").show();
     $("#pizzaNumber").text(pizzaNumber);
   });

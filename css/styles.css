@@ -9,3 +9,7 @@ h4 {
 #receipt {
   display: none;
 }
+
+#mainInfo, #addressInfo, #addPizza {
+  display: none;
+}
