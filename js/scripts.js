@@ -23,10 +23,12 @@ Pizza.prototype.price = function() {
   return pizzaPrice;
 }
 
-var finalOrderPrice = 0;
-
 // UI Logic
 $(document).ready(function(){
+
+  var finalOrderPrice = 0;
+  var pizzaNumber = 0;
+
   $("form").submit(function(event){
     event.preventDefault();
     var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
@@ -35,10 +37,16 @@ $(document).ready(function(){
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
     var pizzaOrderPrice = pizzaOrder.price();
-    $("#pizzas").append("<li>" + pizzaOrder.pizzaSize + " pizza with " + pizzaOrder.toppings.length + " topping(s)" + "</li>");
+
+    ///refactor append section
+    $("#pizzas ul").append("<li>" + pizzaOrder.pizzaSize + " pizza with " + pizzaOrder.toppings.length + " topping(s): $" + pizzaOrderPrice + "</li>");
+    $("#subtotal").show();
 
     console.log(pizzaOrderPrice);
+    /// does this count as ui or business
     finalOrderPrice += pizzaOrderPrice;
+    pizzaNumber ++;
+    $(".total").text(finalOrderPrice);
     $("#finalOrder").show();
 
     $("input[type=checkbox]").prop("checked", false);
@@ -49,7 +57,12 @@ $(document).ready(function(){
   }); //submit
 
   $("#finalOrder").click(function() {
-    console.log(finalOrderPrice);
+    $("#pizzas").hide();
+    $("#subtotal").hide();
+    $("#finalOrder").hide();
+    $("form").hide();
+    $("#receipt").show();
+    $("#pizzaNumber").text(pizzaNumber);
   });
 
 });

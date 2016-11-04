@@ -43,12 +43,16 @@
           <input type="checkbox" name="toppings" value="pineapple">Pineapple<br>
           <input type="checkbox" name="toppings" value="spinach">Spinach<br>
         </div> <!--toppings-->
-        <button type="submit" class="form-control">Add Pizza</button>
+        <button type="submit" class="form-control" id="addPizza">Add Pizza to Order</button>
       </form>
       <button id="finalOrder" class="form-control">Place Order</button>
       <div id="pizzas">
         <ul>
         </ul>
+        <h4 id="subtotal">Total: $<span class="total"></span></h4>
+      </div>
+      <div id="receipt">
+        <h3>Thank you! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be arriving soon. Your total was $<span class="total"></span>.</h3>
       </div>
 
 
