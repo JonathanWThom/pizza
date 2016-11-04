@@ -15,16 +15,12 @@ Pizza.prototype.price = function() {
   } else if (this.pizzaSize === "large") {
     pizzaPrice += 15;
   }
-
-// could this be a for loop ??
-  if (this.toppings.length <= 2) {
-    pizzaPrice;
-  } else {
-    pizzaPrice += (this.toppings.length - 2) * 1;
+  
+  for (var i = 2; i < this.toppings.length; i++) {
+    pizzaPrice += 1;
   }
   return pizzaPrice;
 }
-
 // UI Logic
 $(document).ready(function(){
   $("form").submit(function(event){
@@ -34,7 +30,7 @@ $(document).ready(function(){
       $(this).val();
     });
 
-    //var userToppingsSelections = 
+    //var userToppingsSelections =
 
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
