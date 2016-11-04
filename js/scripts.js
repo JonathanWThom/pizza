@@ -1,4 +1,4 @@
-// Business Logic
+///// Business Logic /////
 function Pizza(pizzaSize) {
   this.pizzaSize = pizzaSize;
   this.toppings = [];
@@ -33,29 +33,38 @@ Pizza.prototype.price = function() {
   return pizzaPrice;
 }
 
+Address.prototype.format = function() {
+  return "Your pizza will be delivered to: " + this.street + ", " + this.city + ", " + this.state;
+}
+
 var finalOrderPrice = 0;
 var pizzaNumber = 0;
 
-// UI Logic
+function optionChosen() {
+  $("#mainInfo").show();
+  $("#addPizza").show();
+  $("#options").hide();
+  $("#userInputFields").show();
+}
+
+///// User Interface Logic /////
 $(document).ready(function(){
 
+  /// Delivery vs Carry Out ///
   $("#delivery").click(function(){
-    $("#mainInfo").show();
+    optionChosen();
     $("#addressInfo").show();
-    $("#addPizza").show();
-    $("#options").hide();
-    $("#userInputFields").show();
   });
 
   $("#carryOut").click(function() {
-    $("#mainInfo").show();
-    $("#addPizza").show();
-    $("#options").hide();
-    $("#userInputFields").show();
+    optionChosen();
   });
 
+  /// Create a pizza ///
   $("form").submit(function(event){
     event.preventDefault();
+
+    // User input //
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(userSizeSelection);
     $("input:checkbox[name=toppings]:checked").each(function(){
@@ -64,28 +73,31 @@ $(document).ready(function(){
       });
     var pizzaOrderPrice = pizzaOrder.price();
 
-    ///refactor append section
+    // Lists Pizzas //
     $("#pizzas ul").append("<li><span class='newPizza'>" + pizzaOrder.pizzaSize + " pizza with " + pizzaOrder.toppings.length + " topping(s): $" + pizzaOrderPrice + "</span></li>");
     $("#subtotal").show();
-//
-    $(".newPizza").last().click(function() {
-      $("#extraInfo").show();
-      $(".toppings").text(pizzaOrder.toppings);
-    });
 
-    /// does this count as ui or business
+    // Totals all pizza prices thus far together //
     finalOrderPrice += pizzaOrderPrice;
     pizzaNumber ++;
     $(".total").text(finalOrderPrice);
     $("#orderSummary").show();
     $("#finalOrder").show();
 
+    // Click on Pizza to see what toppings you chose //
+    $(".newPizza").last().click(function() {
+      $("#extraInfo").show();
+      $(".toppings").text(pizzaOrder.toppings);
+    });
+
+    // Reset fields to make new pizza //
     $("input[type=checkbox]").prop("checked", false);
     $("input[type=radio]").prop("checked", function () {
       return this.getAttribute("checked") === "checked";
     });
   }); //submit
 
+  /// Sumbit final order. Sends you to receipt page ///
   $("#finalOrder").click(function() {
     $("#extraInfo").hide();
     $("#pizzas").hide();
@@ -102,12 +114,13 @@ $(document).ready(function(){
     var street = $("#street").val();
     var city = $("#city").val();
     var state = $("#state").val();
-
+    var userAddress = new Address(street, city, state);
     if (street !== "") {
-      $("#receipt").append("Your pizza will be delivered to: " + street + ", " + city + ", " + state);
+      $("#receiptWell").append(userAddress.format());
     }
   });
 
+  // Reload Page //
   $("#finalPizza").click(function(){
     document.location.reload(true);
   });
