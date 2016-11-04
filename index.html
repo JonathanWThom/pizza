@@ -10,12 +10,11 @@
   <body>
     <div class=container>
       <div id="intro">
-        <div class="row well">
+        <div class="row well" id="header">
           <h1>Welcome to JT's Pizza Emporium!</h1>
           <h3>Northeast Portland's World's Seventh Best Pizza Shop!</h3>
-          <h5>Please select one option from below.</h5>
         </div>
-        <div class="row">
+        <div class="row" id="options">
           <div class="col-md-3"></div>
           <div class="col-md-3">
             <button id="delivery">Delivery</button>
@@ -88,8 +87,11 @@
           <button id="finalOrder" class="btn btn-success btn-group-lrg">Place Order</button>
         </div><!--column-->
       </div><!--row-->
-      <div id="receipt" class="well">
-        <h3>Thank you <span id="userName"></span>! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be ready soon. Your total was $<span class="total"></span>.</h3>
+      <div id="receipt">
+        <div class="well">
+          <h3>Thank you <span id="userName"></span>! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be ready soon. Your total was $<span class="total"></span>.</h3>
+        </div>
+        <img src="img/pizza.png" alt="A picture of pizza" id="finalPizza">
       </div>
 
 

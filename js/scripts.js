@@ -43,16 +43,14 @@ $(document).ready(function(){
     $("#mainInfo").show();
     $("#addressInfo").show();
     $("#addPizza").show();
-    $("#intro").hide();
+    $("#options").hide();
     $("#userInputFields").show();
   });
 
   $("#carryOut").click(function() {
     $("#mainInfo").show();
     $("#addPizza").show();
-    $("#delivery").hide();
-    $("#carryOut").hide();
-    $("#intro").hide();
+    $("#options").hide();
     $("#userInputFields").show();
   });
 
@@ -98,8 +96,6 @@ $(document).ready(function(){
     $("#subtotal").hide();
     $("#finalOrder").hide();
     $("form").hide();
-    $("#delivery").hide();
-    $("#carryOut").hide();
     $("#receipt").show();
     $("#orderSummary").hide();
     $("#finalOrder").hide();
@@ -114,6 +110,10 @@ $(document).ready(function(){
     if (street !== "") {
       $("#receipt").append("Your pizza will be delivered to: " + street + ", " + city + ", " + state);
     }
+  });
+
+  $("#finalPizza").click(function(){
+    document.location.reload(true);
   });
 
 });
