@@ -43,8 +43,7 @@ $(document).ready(function(){
     $("#mainInfo").show();
     $("#addressInfo").show();
     $("#addPizza").show();
-    $("#delivery").hide();
-    $("#carryOut").hide();
+    $("#intro").hide();
   });
 
   $("#carryOut").click(function() {
@@ -52,6 +51,7 @@ $(document).ready(function(){
     $("#addPizza").show();
     $("#delivery").hide();
     $("#carryOut").hide();
+    $("#intro").hide();
   });
 
   $("form").submit(function(event){

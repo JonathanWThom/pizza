@@ -1,3 +1,7 @@
+body {
+  background-image: url(../img/tablecloth.gif);
+}
+
 #finalOrder {
   display: none;
 }
@@ -14,14 +18,20 @@ h4 {
   display: none;
 }
 
-#delivery {
+#delivery, #carryOut {
   width: 225px;
   height: 125px;
   font-size: 25px;
+  border: 5px ridge red;
+  background-color: lightblue;
 }
 
-#carryOut {
-  width: 225px;
-  height: 125px;
-  font-size: 25px;
+.well {
+  border: 5px ridge red;
+  background-color: lightblue;
+}
+
+
+#intro {
+  text-align: center;
 }
