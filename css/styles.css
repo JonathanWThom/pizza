@@ -6,6 +6,11 @@ body {
   display: none;
 }
 
+
+#addPizza {
+  margin-top: 20px;
+}
+
 h4 {
   display: none;
 }
@@ -31,7 +36,14 @@ h4 {
   background-color: lightblue;
 }
 
-
 #intro {
   text-align: center;
+}
+
+#orderSummary {
+  display: none;
+}
+
+#userInputFields {
+  display: none;
 }

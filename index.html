@@ -27,7 +27,7 @@
         </div>
       </div><!--intro-->
       <div class="row">
-        <div class="col-md-6 well">
+        <div class="col-md-6 well" id="userInputFields">
           <form>
             <h3>Customize Your Pizza!</h3>
             <div id="mainInfo">
@@ -71,11 +71,12 @@
               <input id="city" type="text" class="form-control" placeholder="City">
               <input id="state" type="text" class="form-control" placeholder="State">
             </div>
-            <button type="submit" class="form-control" id="addPizza">Add Pizza to Order</button>
+            <button type="submit" class="btn btn-primary btn-group-lrg" id="addPizza">Add Pizza to Order</button>
           </form>
         </div><!--column-->
-        <div class="col-md-6 well">
+        <div class="col-md-6 well" id="orderSummary">
           <h3>Order Summary</h3>
+          <h5>Click pizza to see toppings</h5>
           <div id="pizzas">
             <ul>
             </ul>
@@ -84,10 +85,10 @@
           <div id="extraInfo">
             <p class="toppings"></p>
           </div>
+          <button id="finalOrder" class="btn btn-success btn-group-lrg">Place Order</button>
         </div><!--column-->
       </div><!--row-->
-      <button id="finalOrder" class="form-control">Place Order</button>
-      <div id="receipt">
+      <div id="receipt" class="well">
         <h3>Thank you <span id="userName"></span>! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be ready soon. Your total was $<span class="total"></span>.</h3>
       </div>
 

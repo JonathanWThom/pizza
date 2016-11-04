@@ -44,6 +44,7 @@ $(document).ready(function(){
     $("#addressInfo").show();
     $("#addPizza").show();
     $("#intro").hide();
+    $("#userInputFields").show();
   });
 
   $("#carryOut").click(function() {
@@ -52,6 +53,7 @@ $(document).ready(function(){
     $("#delivery").hide();
     $("#carryOut").hide();
     $("#intro").hide();
+    $("#userInputFields").show();
   });
 
   $("form").submit(function(event){
@@ -77,6 +79,7 @@ $(document).ready(function(){
     finalOrderPrice += pizzaOrderPrice;
     pizzaNumber ++;
     $(".total").text(finalOrderPrice);
+    $("#orderSummary").show();
     $("#finalOrder").show();
 
     $("input[type=checkbox]").prop("checked", false);
@@ -98,6 +101,9 @@ $(document).ready(function(){
     $("#delivery").hide();
     $("#carryOut").hide();
     $("#receipt").show();
+    $("#orderSummary").hide();
+    $("#finalOrder").hide();
+    $("#userInputFields").hide();
     var userName = $("#name").val();
     $("#userName").text(userName);
     $("#pizzaNumber").text(pizzaNumber);
