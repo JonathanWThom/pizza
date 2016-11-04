@@ -33,11 +33,11 @@ Pizza.prototype.price = function() {
   return pizzaPrice;
 }
 
+var finalOrderPrice = 0;
+var pizzaNumber = 0;
+
 // UI Logic
 $(document).ready(function(){
-
-  var finalOrderPrice = 0;
-  var pizzaNumber = 0;
 
   $("#delivery").click(function(){
     $("#mainInfo").show();
@@ -84,10 +84,6 @@ $(document).ready(function(){
     $("input[type=radio]").prop("checked", function () {
       return this.getAttribute("checked") === "checked";
     });
-
-
-
-
   }); //submit
 
   $("#finalOrder").click(function() {

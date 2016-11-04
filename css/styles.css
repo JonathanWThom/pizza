@@ -2,6 +2,10 @@ body {
   background-image: url(../img/tablecloth.gif);
 }
 
+#header {
+  text-align: center;
+}
+
 .homePizza {
   width: 15%;
 }

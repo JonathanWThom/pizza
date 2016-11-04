@@ -5,27 +5,27 @@
     <link rel="stylesheet" href="css/styles.css" text="text/css">
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Pizza!</title>
+    <title>JT's Pizza Emporium</title>
   </head>
   <body>
-    <div class=container>
-      <div id="intro">
-        <div class="row well" id="header">
-          <img src="img/homepizza.png" alt="A picture of a pizza" class="homePizza">
-          <h1>JT's Pizza Emporium!</h1>
-          <h3>Northeast Portland's World's Seventh Best Pizza Shop</h3>
+    <div class="container">
+      <div class="row well" id="header">
+        <img src="img/homepizza.png" alt="A picture of a pizza" class="homePizza">
+        <h1>JT's Pizza Emporium!</h1>
+        <h3>Northeast Portland's World's Seventh Best Pizza Shop</h3>
+      </div>
+
+      <div class="row" id="options">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <button id="delivery">Delivery</button>
         </div>
-        <div class="row" id="options">
-          <div class="col-md-3"></div>
-          <div class="col-md-3">
-            <button id="delivery">Delivery</button>
-          </div>
-          <div class="col-md-3">
-            <button id="carryOut">Carry Out</button>
-          </div>
-          <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <button id="carryOut">Carry Out</button>
         </div>
-      </div><!--intro-->
+        <div class="col-md-3"></div>
+      </div>
+
       <div class="row">
         <div class="col-md-6 well" id="userInputFields">
           <form>
@@ -50,8 +50,8 @@
                     Large ($15)
                   </label>
                 </div>
-              </div><!--form group-->
-              <div class="form-group" id="toppingOptions">
+              </div><!--Size Form Group-->
+              <div class="form-group">
                 <h5>Choose your toppings<h5>
                 <h5>The first two toppings are free, add $1 for each additional</h5>
                 <input type="checkbox" name="toppings" value=" Pepperoni"> Pepperoni<br>
@@ -64,9 +64,10 @@
                 <input type="checkbox" name="toppings" value=" Peppers"> Green peppers<br>
                 <input type="checkbox" name="toppings" value=" Pineapple"> Pineapple<br>
                 <input type="checkbox" name="toppings" value=" Spinach"> Spinach<br>
-              </div> <!--toppings-->
+              </div> <!--toppings form group-->
               <input id="name" type="text" class="form-control" placeholder="Name">
             </div> <!--Main info-->
+
             <div id="addressInfo">
               <input id="street" type="text" class="form-control" placeholder="Street">
               <input id="city" type="text" class="form-control" placeholder="City">
@@ -74,7 +75,8 @@
             </div>
             <button type="submit" class="btn btn-primary btn-group-lrg" id="addPizza">Add Pizza to Order</button>
           </form>
-        </div><!--column-->
+        </div><!--User Input column-->
+
         <div class="col-md-6 well" id="orderSummary">
           <h3>Order Summary</h3>
           <h5>Click pizza to see toppings</h5>
@@ -87,16 +89,15 @@
             <p class="toppings"></p>
           </div>
           <button id="finalOrder" class="btn btn-success btn-group-lrg">Place Order</button>
-        </div><!--column-->
+        </div><!--order summary column-->
       </div><!--row-->
+
       <div id="receipt">
         <div class="well">
           <h3>Thank you <span id="userName"></span>! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be ready soon. Your total was $<span class="total"></span>.</h3>
-        </div>
+        </div> <!--well-->
         <img src="img/pizza.png" alt="A picture of pizza" id="finalPizza">
       </div>
-
-
     </div> <!--container-->
   </body>
 </html>
