@@ -19,7 +19,7 @@ Pizza.prototype.price = function() {
   for (var i = 2; i < this.toppings.length; i++) {
     pizzaPrice += 1;
   }
-  
+
   return pizzaPrice;
 }
 // UI Logic
@@ -31,12 +31,17 @@ $(document).ready(function(){
       $(this).val();
     });
 
-    //var userToppingsSelections =
-
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
     var pizzaOrderPrice = pizzaOrder.price();
     console.log(pizzaOrderPrice);
 
+  }); //form submit
+
+  $("#extra-pizza").click(function(){
+    //$('input:checkbox[name=toppings]:checked').removeAttr('checked');
+    $("input[type=radio]").prop("checked", function () {
+        return this.getAttribute("checked") === "checked";
+    });
   });
 });
