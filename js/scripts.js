@@ -1,7 +1,13 @@
 // Business Logic
-function Pizza(toppings, pizzaSize) {
+function Pizza(toppings, pizzaSize, delivery) {
   this.toppings = toppings;
   this.pizzaSize = pizzaSize;
+}
+
+function Address(street, city, state) {
+  this.street = street;
+  this.city = city;
+  this.state = state;
 }
 
 Pizza.prototype.price = function() {
@@ -20,6 +26,10 @@ Pizza.prototype.price = function() {
     pizzaPrice += 1;
   }
 
+  if (delivery === true) {
+    pizzaPrice +=5;
+  }
+
   return pizzaPrice;
 }
 
@@ -33,27 +43,37 @@ $(document).ready(function(){
     $("#mainInfo").show();
     $("#addressInfo").show();
     $("#addPizza").show();
+    $("#delivery").hide();
+    $("#carryOut").hide();
   });
 
   $("#carryOut").click(function() {
     $("#mainInfo").show();
     $("#addPizza").show();
+    $("#delivery").hide();
+    $("#carryOut").hide();
   });
 
   $("form").submit(function(event){
     event.preventDefault();
     var toppings = $("input:checkbox[name=toppings]:checked").each(function(){
       $(this).val();
-    });
+      });
     var userSizeSelection = $("input:radio[name=userSizeSelection]:checked").val();
     var pizzaOrder = new Pizza(toppings, userSizeSelection);
     var pizzaOrderPrice = pizzaOrder.price();
 
     ///refactor append section
-    $("#pizzas ul").append("<li>" + pizzaOrder.pizzaSize + " pizza with " + pizzaOrder.toppings.length + " topping(s): $" + pizzaOrderPrice + "</li>");
+    $("#pizzas ul").append("<li><span class='newPizza'>" + pizzaOrder.pizzaSize + " pizza with " + pizzaOrder.toppings.length + " topping(s): $" + pizzaOrderPrice + "</span></li>");
     $("#subtotal").show();
 
-    console.log(pizzaOrderPrice);
+    console.log(pizzaOrder.toppings);
+
+    // $(".newPizza").last().click(function() {
+    //   $("#orderInfo").show();
+    //   $(".toppings").text(pizzaOrder.toppings);
+    // });
+
     /// does this count as ui or business
     finalOrderPrice += pizzaOrderPrice;
     pizzaNumber ++;
@@ -65,6 +85,9 @@ $(document).ready(function(){
       return this.getAttribute("checked") === "checked";
     });
 
+
+
+
   }); //submit
 
   $("#finalOrder").click(function() {
@@ -75,7 +98,16 @@ $(document).ready(function(){
     $("#delivery").hide();
     $("#carryOut").hide();
     $("#receipt").show();
+    var userName = $("#name").val();
+    $("#userName").text(userName);
     $("#pizzaNumber").text(pizzaNumber);
+    var street = $("#street").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+
+    if (street !== "") {
+      $("#receipt").append("Your pizza will be delivered to: " + street + ", " + city + ", " + state);
+    }
   });
 
 });

@@ -13,3 +13,15 @@ h4 {
 #mainInfo, #addressInfo, #addPizza {
   display: none;
 }
+
+#delivery {
+  width: 225px;
+  height: 125px;
+  font-size: 25px;
+}
+
+#carryOut {
+  width: 225px;
+  height: 125px;
+  font-size: 25px;
+}

@@ -9,8 +9,16 @@
   </head>
   <body>
     <div class=container>
-      <button id="delivery">Delivery</button>
-      <button id="carryOut">Carry Out</button>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <button id="delivery">Delivery</button>
+        </div>
+        <div class="col-md-3">
+          <button id="carryOut">Carry Out</button>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
       <form>
         <div id="mainInfo">
           <div class="form-group">
@@ -61,8 +69,11 @@
         </ul>
         <h4 id="subtotal">Total: $<span class="total"></span></h4>
       </div>
+      <div id="extraInfo">
+        <p class="toppings"></p>
+      </div>
       <div id="receipt">
-        <h3>Thank you! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be arriving soon. Your total was $<span class="total"></span>.</h3>
+        <h3>Thank you <span id="userName"></span>! Your order for <span id="pizzaNumber"></span> pizza(s) has been submitted and will be ready soon. Your total was $<span class="total"></span>.</h3>
       </div>
 
 
